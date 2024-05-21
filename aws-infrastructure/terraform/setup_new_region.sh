@@ -75,6 +75,7 @@ HUB="${REGION_TO_HUB[$REGION]}"
 ACTION=${@:4}
 
 if [ "$ACTION" = "destroy -auto-approve" ]; then
+  echo "Checking if $TF_STATE_BUCKET exists..."
   if aws s3api head-bucket --bucket $TF_STATE_BUCKET --profile $PROFILE --region $REGION 2>/dev/null; then
     ./$SCRIPT $PROFILE $REGION common/services/measurements-dynamodb $ACTION
     delete_secrets_manager
