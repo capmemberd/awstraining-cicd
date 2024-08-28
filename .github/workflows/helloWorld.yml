@@ -23,7 +23,8 @@ jobs:
 
   print_last_name:
     outputs:
-      last_name_length: ${{ steps.count_characters.outputs.length }}
+      last_name_length: ${{ steps.count_characters.outputs.my_exported_var }}
+      next_output: ${{ steps.count_characters.outputs.my_second_var }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo last name to console
@@ -37,7 +38,8 @@ jobs:
           length=${#last_name}
 
           # Export output within the step
-          echo "length=$length" >> $GITHUB_OUTPUT
+          echo "my_exported_var=$length" >> $GITHUB_OUTPUT
+          echo "my_second_var=testValue" >> $GITHUB_OUTPUT
           
   print_last_name_length:
     runs-on: ubuntu-latest
