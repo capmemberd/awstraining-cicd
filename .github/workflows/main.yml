@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Call custom action
         id: custom_action
-        uses: capmemberd/hello-world-action@v1
+        uses: capmemberd/hello-world-action@v2
         with:
           name: ${{ matrix.people }}
 
